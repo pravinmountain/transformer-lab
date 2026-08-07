@@ -2,7 +2,7 @@ import yaml
 from pydantic import BaseModel
 
 class Config(BaseModel):
-    file_path: str = "lotr/lord-of-the-rings.txt"
+    file_path: str = "data/originofspecies00darwuoft_djvu.txt"
     block_size: int = 8
     batch_size: int = 4
 

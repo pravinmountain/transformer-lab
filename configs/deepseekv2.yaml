@@ -2,7 +2,8 @@
 
 
 # Dataset
-file_path: "lotr/lord-of-the-rings.txt"
+# Using origin of species text file for debugging purposes
+file_path: "data/originofspecies00darwuoft_djvu.txt"
 batch_size: 4
 block_size: 8
 
