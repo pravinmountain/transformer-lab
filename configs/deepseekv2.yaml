@@ -1,0 +1,9 @@
+# Model
+
+
+# Dataset
+file_path: "lotr/lord-of-the-rings.txt"
+batch_size: 4
+block_size: 8
+
+# Training
