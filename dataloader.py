@@ -8,6 +8,7 @@ class DataLoader:
         self.block_size = self.config.block_size
         self.batch_size = self.config.batch_size
         self.file_path = self.config.file_path
+        self.encoding = self.config.encoding
 
     def load_data(self, file_path: str = None):
         file_path = file_path or self.file_path
@@ -15,11 +16,11 @@ class DataLoader:
         return text
 
     def encode(self, text: str):
-        enc = tiktoken.get_encoding("gpt2")
+        enc = tiktoken.get_encoding(self.encoding)
         return enc.encode(text)
 
     def decode(self, tokens):
-        enc = tiktoken.get_encoding("gpt2")
+        enc = tiktoken.get_encoding(self.encoding)
         return enc.decode(tokens)
 
     def train_val_split(self, data, split_ratio: float = 0.9, return_lengths: bool = False):

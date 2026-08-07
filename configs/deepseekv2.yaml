@@ -6,5 +6,10 @@
 file_path: "data/originofspecies00darwuoft_djvu.txt"
 batch_size: 4
 block_size: 8
+encoding: 'gpt2'
+vocab_size: 50257
+n_layer: 4
+n_heads: 4
+n_embd: 32
 
 # Training

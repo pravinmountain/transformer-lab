@@ -1,6 +1,8 @@
 import torch 
 import torch.nn as nn 
-import torch.nn.functional as F 
+import torch.nn.functional as F
+
+from config import load_config 
 
 class Block(nn.Module):
     def __init__(self, n_embd: int, n_head: int):
@@ -24,14 +26,15 @@ class Block(nn.Module):
         return x
 
 class LanguageModel(nn.Module):
-    def __init__(self, vocab_size: int, block_size: int, n_embd: int, n_layer: int, n_head: int):
+    def __init__(self, config_path: str):
         super().__init__()
-        self.block_size = block_size
-        self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
-        self.position_embedding_table = nn.Embedding(block_size, n_embd)
-        self.blocks = nn.Sequential(*[Block(n_embd, n_head) for _ in range(n_layer)])
-        self.ln_f = nn.LayerNorm(n_embd)
-        self.lm_head = nn.Linear(n_embd, vocab_size)
+        self.config = load_config(config_path)
+        self.block_size = self.config.block_size
+        self.token_embedding_table = nn.Embedding(self.config.vocab_size, self.config.n_embd)
+        self.position_embedding_table = nn.Embedding(self.config.block_size, self.config.n_embd)
+        self.blocks = nn.Sequential(*[Block(self.config.n_embd, self.config.n_head) for _ in range(self.config.n_layer)])
+        self.ln_f = nn.LayerNorm(self.config.n_embd)
+        self.lm_head = nn.Linear(self.config.n_embd, self.config.vocab_size)
 
     def forward(self, idx, targets=None):
         B, T = idx.shape
