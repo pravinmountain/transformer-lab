@@ -12,10 +12,15 @@ class DataLoader:
     def load_data(self, file_path: str = None):
         file_path = file_path or self.file_path
         text = open(file_path, mode='r', encoding='utf-8').read()
+        return text
+
+    def encode(self, text: str):
         enc = tiktoken.get_encoding("gpt2")
-        tokens = enc.encode(text)
-        data = torch.tensor(tokens)
-        return data 
+        return enc.encode(text)
+
+    def decode(self, tokens):
+        enc = tiktoken.get_encoding("gpt2")
+        return enc.decode(tokens)
 
     def train_val_split(self, data, split_ratio: float = 0.9, return_lengths: bool = False):
         n = int(split_ratio * len(data))
