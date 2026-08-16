@@ -11,11 +11,8 @@ dependencies = [
     "torch>=2.0",
     "matplotlib",
     "pyyaml",
-    "pandas",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest"]
 
-[tool.setuptools.packages.find]
-where = ["src"]
