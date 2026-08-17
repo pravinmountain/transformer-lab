@@ -1,3 +1,4 @@
+from transformer_lab.attention.config import AttentionConfig
 from abc import ABC, abstractmethod
 from typing import Optional
 import torch 
@@ -6,9 +7,9 @@ import torch.nn as nn
 class AttentionBase(nn.Module, ABC):
     """Base Interface for all attention mechanisms."""
 
-    def __init__(self, d_model: int):
+    def __init__(self, cfg: AttentionConfig):
         super().__init__()
-        self.d_model = d_model
+        self.cfg = cfg 
 
 
     @abstractmethod
