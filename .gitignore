@@ -219,3 +219,10 @@ __marimo__/
 
 # .bin files
 *.bin
+
+# jupyter notebooks and excalidraw files
+# I am using jupyter notebook for debugging purposes,
+# and excalidraw to understand through diagrams
+# I want to pollute repo by commiting jupyter notebooks and excalidraw files to github.
+*.ipynb
+*.excalidraw
